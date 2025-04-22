@@ -1,17 +1,5 @@
 let data;
 
-let radiusScale = d3.scaleSqrt().domain([0, 100]).range([0, 20]);
-
-function update() {
-    d3.select('#chart')
-        .selectAll('circle')
-        .data(data)
-        .join('circle')
-        .attr('cx', (_d, i) => i * 10)
-        .attr('cy', 100)
-        .attr('r', (d) => radiusScale(d.renewable));
-}
-
 function dataIsReady(csv) {
     data = csv;
     console.log(data);
