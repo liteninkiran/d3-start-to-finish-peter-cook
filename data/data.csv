@@ -1,5 +1,5 @@
 id,name,oilgascoal,nuclear,hydroelectric,renewable
-AGO,Angola,46.8,0.0,53.2,0.0
+AGO,Angola,46.8,,53.2,0.0
 ALB,Albania,0.0,,100.0,0.0
 ARE,United Arab Emirates,99.8,,0.0,0.2
 ARG,Argentina,66.9,,26.2,1.9
