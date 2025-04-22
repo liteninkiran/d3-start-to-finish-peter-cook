@@ -21,15 +21,19 @@ function updateGroup(d, _i) {
         initialiseGroup(g);
     }
 
+    g.attr('transform', `translate(${d.x}, ${d.y})`)
+        .style('opacity', d.visible ? 1 : 0)
+        .style('pointer-events', d.visible ? 'all' : 'none');
+
     g.attr('transform', `translate(${d.x}, ${d.y})`);
     
     g.select('.popup-centre')
         .attr('cy', d.popupOffset);
 
-    g.select('.renewable').attr('r', d.renewableRadius);
-    g.select('.oilgascoal').attr('r', d.oilgascoalRadius);
-    g.select('.nuclear').attr('r', d.nuclearRadius);
-    g.select('.hydroelectric').attr('r', d.hydroelectricRadius);
+    g.select('.renewable').attr('r', d.radii.renewable);
+    g.select('.oilgascoal').attr('r', d.radii.oilgascoal);
+    g.select('.nuclear').attr('r', d.radii.nuclear);
+    g.select('.hydroelectric').attr('r', d.radii.hydroelectric);
 
     g.select('.label')
         .attr('y', d.labelOffset)
