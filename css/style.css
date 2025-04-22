@@ -1,8 +1,34 @@
+body {
+    background-color: #fffff7;
+}
+
 .country .label {
     text-anchor: middle;
 }
 
-circle {
+circle.renewable {
+    fill: #7fb069;
+}
+
+circle.oilgascoal {
     fill: none;
-    stroke: #aaa;
+    stroke: #bcb5b2;
+}
+
+circle.nuclear {
+    fill: none;
+    stroke: #5eb1bf;
+    stroke-dasharray: 3,1;
+}
+
+circle.hydroelectric {
+    fill: none;
+    stroke: #f6ae2d;
+    stroke-dasharray: 4,2;
+}
+
+#wrapper {
+    width: 1200px;
+    height: 1200px;
+    margin: 0 auto;
 }
