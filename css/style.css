@@ -6,6 +6,14 @@ body {
     text-anchor: middle;
 }
 
+.country {
+    pointer-events: all;
+}
+
+.flourish-popup {
+    pointer-events: none;
+}
+
 circle.renewable {
     fill: #7fb069;
 }
@@ -31,4 +39,8 @@ circle.hydroelectric {
     width: 1200px;
     height: 1200px;
     margin: 0 auto;
+}
+
+.popup-centre {
+    opacity: 0;
 }

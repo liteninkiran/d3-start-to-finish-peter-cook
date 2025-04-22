@@ -23,6 +23,14 @@ function layout(data) {
             hydroelectricRadius: radiusScale(d.hydroelectric),
             labelText: getTruncatedLabel(d.name),
             labelOffset: maxRadius + labelHeight,
+            popupOffset: -0.8 * maxRadius,
+            popupData: {
+                name: d.name,
+                renewable: d.renewable,
+                oilgascoal: d.oilgascoal,
+                nuclear: d.nuclear,
+                hydroelectric: d.hydroelectric,
+            }
         }
     });
 }

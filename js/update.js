@@ -1,5 +1,12 @@
 function initialiseGroup(g) {
-    g.classed('country', true);
+    g.classed('country', true)
+        .on('mouseover', handleMouseover)
+        .on('mouseout', handleMouseout);
+
+    g.append('circle')
+        .classed('popup-centre', true)
+        .attr('r', 1);
+
     g.append('circle').classed('renewable', true);
     g.append('circle').classed('oilgascoal', true);
     g.append('circle').classed('nuclear', true);
@@ -16,6 +23,9 @@ function updateGroup(d, _i) {
 
     g.attr('transform', `translate(${d.x}, ${d.y})`);
     
+    g.select('.popup-centre')
+        .attr('cy', d.popupOffset);
+
     g.select('.renewable').attr('r', d.renewableRadius);
     g.select('.oilgascoal').attr('r', d.oilgascoalRadius);
     g.select('.nuclear').attr('r', d.nuclearRadius);
