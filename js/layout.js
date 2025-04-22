@@ -17,7 +17,10 @@ function layout(data) {
         return {
             x: (column + 0.5) * cellWidth,
             y: (row + 0.5) * cellHeight,
-            radius: radiusScale(d.renewable),
+            renewableRadius: radiusScale(d.renewable),
+            oilgascoalRadius: radiusScale(d.oilgascoal),
+            nuclearRadius: radiusScale(d.nuclear),
+            hydroelectricRadius: radiusScale(d.hydroelectric),
             labelText: getTruncatedLabel(d.name),
             labelOffset: maxRadius + labelHeight,
         }

@@ -2,7 +2,6 @@ let data;
 
 function dataIsReady(csv) {
     data = csv;
-    console.log(data);
     update();
 }
 
