@@ -1,6 +1,11 @@
+function getTruncatedLabel(text) {
+    return text.length <= 10 ? text : text.slice(0, 10) + '...';
+}
+
 function layout(data) {
+    const labelHeight = 20;
     const cellWidth = config.width / config.numColumns;
-    const cellHeight = cellWidth;
+    const cellHeight = cellWidth + labelHeight;
     const maxRadius = 0.35 * cellWidth;
     const radiusScale = d3.scaleSqrt()
         .domain([0, 100])
@@ -13,6 +18,8 @@ function layout(data) {
             x: (column + 0.5) * cellWidth,
             y: (row + 0.5) * cellHeight,
             radius: radiusScale(d.renewable),
+            labelText: getTruncatedLabel(d.name),
+            labelOffset: maxRadius + labelHeight,
         }
     });
 }
