@@ -36,10 +36,15 @@ function updateGroup(d, _i) {
         .text(d.labelText);
 }
 
-function update() {
+function updateChart() {
     d3.select('#chart')
         .selectAll('g')
         .data(layout(data))
         .join('g')
         .each(updateGroup);
+}
+
+function update() {
+    updateChart();
+    updateMenu();
 }
