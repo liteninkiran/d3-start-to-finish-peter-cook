@@ -1,5 +1,7 @@
-function initialiseGroup(g) {
+function initialiseGroup(g, d) {
     g.classed('country', true)
+        .style('opacity', 0)
+        .attr('transform', `translate(${d.x}, ${d.y})`)
         .on('mouseover', handleMouseover)
         .on('mouseout', handleMouseout);
 
@@ -14,14 +16,17 @@ function initialiseGroup(g) {
     g.append('text').classed('label', true);
 }
 
-function updateGroup(d, _i) {
+function updateGroup(d, i) {
     const g = d3.select(this);
 
     if (g.selectAll('*').empty()) {
-        initialiseGroup(g);
+        initialiseGroup(g, d);
     }
 
-    g.attr('transform', `translate(${d.x}, ${d.y})`)
+    g.transition()
+        .duration(config.transitionDuration)
+        .delay(i * config.transitionDelay)
+        .attr('transform', `translate(${d.x}, ${d.y})`)
         .style('opacity', d.visible ? 1 : 0)
         .style('pointer-events', d.visible ? 'all' : 'none');
 
@@ -30,10 +35,18 @@ function updateGroup(d, _i) {
     g.select('.popup-centre')
         .attr('cy', d.popupOffset);
 
-    g.select('.renewable').attr('r', d.radii.renewable);
-    g.select('.oilgascoal').attr('r', d.radii.oilgascoal);
-    g.select('.nuclear').attr('r', d.radii.nuclear);
-    g.select('.hydroelectric').attr('r', d.radii.hydroelectric);
+    const setRadius = (selector) => {
+        g.select(`.${selector}`)
+            .transition()
+            .duration(config.circleDuration)
+            .delay(i * config.transitionDelay)
+            .attr('r', d.radii[selector]);
+    }
+
+    setRadius('renewable');
+    setRadius('oilgascoal');
+    setRadius('nuclear');
+    setRadius('hydroelectric');
 
     g.select('.label')
         .attr('y', d.labelOffset)
@@ -43,7 +56,7 @@ function updateGroup(d, _i) {
 function updateChart() {
     d3.select('#chart')
         .selectAll('g')
-        .data(layout(data))
+        .data(layout(data), d => d.id)
         .join('g')
         .each(updateGroup);
 }

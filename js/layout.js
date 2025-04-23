@@ -30,6 +30,7 @@ const getPopupData = (d) => ({
 });
 
 const mapFn = (d, i) => ({
+    id: d.id,
     x: (i % config.numColumns + 0.5) * cellWidth,
     y: (Math.floor(i / config.numColumns) + 0.5) * cellHeight,
     visible: isVisible(d),
