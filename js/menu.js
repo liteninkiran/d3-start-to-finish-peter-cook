@@ -37,5 +37,18 @@ function updateMenu() {
         .text(function(d) {
             return d.label;
         })
+        .html(getHtml)
         .on('click', handleMenuClick);
+}
+
+function getCircle(id) {
+    return `<svg width="18" height="18">
+        <circle class="${id}" cx="9" cy="9" r="8"></circle>
+    </svg>`;
+}
+
+function getHtml(d) {
+    const circle = d.id === 'country' ? '' : getCircle(d.id);
+    const label = `<div class="label">${d.label}</div>`;
+    return circle + label;
 }
