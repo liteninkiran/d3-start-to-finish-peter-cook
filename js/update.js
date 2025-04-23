@@ -61,7 +61,12 @@ function updateChart() {
         .each(updateGroup);
 }
 
+function updateLegend() {
+    d3.select('.legend circle').attr('r', getMaxRadius())
+}
+
 function update() {
     updateChart();
     updateMenu();
+    updateLegend();
 }

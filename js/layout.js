@@ -40,9 +40,10 @@ const mapFn = (d, i) => ({
     popupData: getPopupData(d),
     radii: getRadii(d),
 });
+const getMaxRadius = () => 0.35 * cellWidth;
 const labelHeight = 20;
 const cellWidth = config.width / config.numColumns;
 const cellHeight = cellWidth + labelHeight;
-const maxRadius = 0.35 * cellWidth;
+const maxRadius = getMaxRadius();
 const radiusScale = d3.scaleSqrt().domain([0, 100]).range([0, maxRadius]);
 const layout = (data) => getSortedData(data).map(mapFn);

@@ -60,3 +60,20 @@ circle.hydroelectric {
 .menu .item.selected, .menu .item:hover {
     opacity: 1;
 }
+
+#controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.legend circle {
+    stroke: #aaa;
+    fill: none;
+}
+
+.legend text {
+    fill: #777;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
